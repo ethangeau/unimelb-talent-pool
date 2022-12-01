@@ -4,7 +4,7 @@ import { Container, Grid, Typography } from "@mui/material";
 import Profile from "./Profile";
 
 export default function Profiles() {
-  const numOfProfiles = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const numOfProfiles = [...Array(100).keys()];
   return (
     <>
       <Container>
