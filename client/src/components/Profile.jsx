@@ -7,8 +7,8 @@ import {
   CardHeader,
   CardActions,
   CardContent,
-  Typography,
   Container,
+  Typography,
 } from "@mui/material";
 
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
@@ -19,7 +19,8 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
-export default function Profile() {
+export default function Profile({ user }) {
+  console.log(user.email);
   const [recommended, setRecommended] = useState(false);
 
   const handleRecommended = () => {
@@ -27,7 +28,20 @@ export default function Profile() {
   };
 
   return (
-    <Card sx={{ maxWidth: 360, mx: 1, mt: 3 }} elevation={5}>
+    <Card
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        position: "relative",
+        borderRadius: "15px",
+        maxWidth: 360,
+        height: 500,
+        mx: 1,
+        mt: 3,
+      }}
+      elevation={5}
+    >
       <CardHeader
         avatar={
           <Avatar
@@ -37,41 +51,36 @@ export default function Profile() {
             E
           </Avatar>
         }
-        title="Ethan Ge"
+        title={`${user.first_name} ${user.last_name}`}
         titleTypographyProps={{ variant: "h5" }}
+        subheader={user.role}
+        subheaderTypographyProps={{ variant: "subtitle1" }}
       />
-      <CardContent>
-        <Typography variant="h6" gutterBottom color="text.secondary">
-          Software Engineer
-        </Typography>
+      <CardContent sx={{ height: 250, overflow: "auto" }}>
         <Typography variant="body1" gutterBottom color="textSecondary">
-          This is my introduction, I am a student at the University of
-          Melbourne, I am studying Master of Information Technology and I am
-          looking for a software engineer role. This is my introduction, I am a
-          student at the University of Melbourne, I am studying Master of
-          Information Technology and I am looking for a software engineer role.
+          {user.introduction}
         </Typography>
       </CardContent>
-      <Container sx={{ display: "flex", justifyContent: "center" }}>
+      <Container sx={{ display: "flex", justifyContent: "center", mt: 1 }}>
         <ButtonGroup
           variant="text"
           size="small"
           color="inherit"
           aria-label="contacts"
         >
-          <Button onClick={() => {}}>
+          <Button onClick={() => window.open(user.email, "_blank")}>
             <MailOutlineIcon />
           </Button>
-          <Button onClick={() => {}}>
+          <Button onClick={() => window.open(user.personalSite, "_blank")}>
             <LanguageIcon />
           </Button>
-          <Button onClick={() => {}}>
+          <Button onClick={() => window.open(user.linkedin, "_blank")}>
             <LinkedInIcon />
           </Button>
-          <Button onClick={() => {}}>
+          <Button onClick={() => window.open(user.github, "_blank")}>
             <GitHubIcon />
           </Button>
-          <Button onClick={() => {}}>
+          <Button onClick={() => window.open(user.instagram, "_blank")}>
             <InstagramIcon />
           </Button>
         </ButtonGroup>
@@ -87,7 +96,7 @@ export default function Profile() {
           {recommended ? <ThumbUpIcon /> : <ThumbUpOffAltIcon />}
         </Button>
         <Typography variant="body2" color="inherit">
-          2 recommendations
+          {user.recommendations} recommendations
         </Typography>
       </CardActions>
     </Card>
