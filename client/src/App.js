@@ -1,5 +1,12 @@
 import React from "react";
+import Header from "./components/Header";
+import Profiles from "./components/Profiles";
 
 export default function App() {
-  return <h1>Unimelb Talent Pool</h1>;
+  return (
+    <>
+      <Header />
+      <Profiles />
+    </>
+  );
 }
