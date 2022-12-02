@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Profiles from "./components/Profiles";
 import Auth from "./components/Auth/Auth";
 import NotFound from "./components/NotFound";
+import UserInfo from "./components/UserInfo";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/" element={<Header />}>
           <Route index element={<Profiles />} />
           <Route path="auth" element={<Auth />} />
+          <Route path="userinfo" element={<UserInfo />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

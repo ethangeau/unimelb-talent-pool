@@ -2,6 +2,7 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AppBar, Typography } from "@mui/material";
 import SchoolIcon from "@mui/icons-material/School";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 export default function Header() {
   return (
@@ -45,22 +46,34 @@ export default function Header() {
           </Typography>
         </div>
         <Typography variant="h5">Search</Typography>
-
-        <Typography
-          component={Link}
-          to="/auth"
-          variant="h5"
-          sx={{
-            mr: "2rem",
-            color: "#fff",
-            textDecoration: "none",
-            "&:hover": {
-              textDecoration: "underline",
-            },
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
           }}
         >
-          Sign in/up
-        </Typography>
+          <Link to="/userinfo">
+            <AccountCircleIcon
+              sx={{ fontSize: 40, color: "#fff", mr: "1rem" }}
+            />
+          </Link>
+          <Typography
+            component={Link}
+            to="/auth"
+            variant="h5"
+            sx={{
+              mr: "2rem",
+              color: "#fff",
+              textDecoration: "none",
+              "&:hover": {
+                textDecoration: "underline",
+              },
+            }}
+          >
+            Sign in/up
+          </Typography>
+        </div>
       </AppBar>
       <Outlet />
     </>
