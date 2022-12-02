@@ -20,7 +20,7 @@ export default function Header() {
         style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
       >
         <SchoolIcon sx={{ fontSize: 40, color: "#fff", marginLeft: "1rem" }} />
-        <Typography variant="h5" sx={{ ml: "2rem" }}>
+        <Typography variant="h5" sx={{ ml: "5px" }}>
           Unimelb Talent Pool
         </Typography>
       </div>
