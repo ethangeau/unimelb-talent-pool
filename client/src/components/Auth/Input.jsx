@@ -5,15 +5,27 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 export default function Input(props) {
-  const { name, label, handleChange, autoFocus, type, handleShowPassword } =
-    props;
+  const {
+    isHalf,
+    name,
+    label,
+    handleChange,
+    required,
+    multiline,
+    autoFocus,
+    type,
+    handleShowPassword,
+  } = props;
+
   return (
-    <Grid item xs={12}>
+    <Grid item xs={12} sm={isHalf ? 6 : 12}>
       <TextField
         name={name}
         onChange={handleChange}
         variant="outlined"
-        required
+        required={required}
+        rows={3}
+        multiline={multiline}
         fullWidth
         label={label}
         autoFocus={autoFocus}
