@@ -2,7 +2,7 @@ import axios from "axios";
 
 const url = process.env.REACT_APP_API_URL;
 
-export const fetchProfiles = () => axios.get(url);
+export const getProfiles = () => axios.get(url);
 export const createProfile = (newProfile) => axios.post(url, newProfile);
 export const updateProfile = (id, updatedProfile) =>
   axios.patch(`${url}/${id}`, updatedProfile);
