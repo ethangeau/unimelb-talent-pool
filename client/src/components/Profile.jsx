@@ -20,7 +20,6 @@ import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
 export default function Profile({ user }) {
-  console.log(user.email);
   const [recommended, setRecommended] = useState(false);
 
   const handleRecommended = () => {
@@ -36,7 +35,7 @@ export default function Profile({ user }) {
         position: "relative",
         borderRadius: "15px",
         maxWidth: 360,
-        height: 500,
+        height: 460,
         mx: 1,
         mt: 3,
       }}
@@ -46,12 +45,13 @@ export default function Profile({ user }) {
         avatar={
           <Avatar
             size="large"
+            src={user.avatar}
             sx={{ bgcolor: "#023D80", width: "6rem", height: "6rem" }}
           >
-            E
+            {user.firstName[0]}
           </Avatar>
         }
-        title={`${user.first_name} ${user.last_name}`}
+        title={`${user.firstName} ${user.lastName}`}
         titleTypographyProps={{ variant: "h5" }}
         subheader={user.role}
         subheaderTypographyProps={{ variant: "subtitle1" }}
