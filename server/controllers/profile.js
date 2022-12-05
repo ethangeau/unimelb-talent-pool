@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Profile from "../models/index.js";
+import Profile from "../models/profile.js";
 
 export const getProfiles = async (req, res) => {
   try {
