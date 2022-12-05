@@ -48,7 +48,7 @@ export default function Profile({ user }) {
             src={user.avatar}
             sx={{ bgcolor: "#023D80", width: "6rem", height: "6rem" }}
           >
-            {user.firstName[0]}
+            <Typography variant="h4">{user.firstName[0]}</Typography>
           </Avatar>
         }
         title={`${user.firstName} ${user.lastName}`}
