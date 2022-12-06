@@ -41,14 +41,14 @@ export const signUp = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const findUserResult = await UserModal.findOne({ email });
+    const findUserResult = await User.findOne({ email });
 
     if (findUserResult)
       return res
         .status(400)
         .json({ message: "User already exists, please sign in." });
 
-    const hashedPassword = bcrypt.hash(password, process.env.SALT);
+    const hashedPassword = await bcrypt.hash(password, 12);
 
     const result = await User.create({
       email,
