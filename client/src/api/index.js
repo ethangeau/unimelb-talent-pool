@@ -1,11 +1,23 @@
 import axios from "axios";
 
-const url = process.env.REACT_APP_API_URL;
+const API = axios.create({ baseURL: process.env.REACT_APP_API_URL });
 
-export const getProfiles = () => axios.get(url);
-export const createProfile = (newProfile) => axios.post(url, newProfile);
+API.interceptors.request.use((req) => {
+  if (localStorage.getItem("profile")) {
+    req.headers.Authorization = `Bearer ${
+      JSON.parse(localStorage.getItem("profile")).token
+    }`;
+  }
+  return req;
+});
+
+export const getProfiles = () => API.get("/");
+export const createProfile = (newProfile) => API.post("/", newProfile);
 export const updateProfile = (id, updatedProfile) =>
-  axios.patch(`${url}/${id}`, updatedProfile);
-export const deleteProfile = (id) => axios.delete(`${url}/${id}`);
+  API.patch(`/${id}`, updatedProfile);
+export const deleteProfile = (id) => API.delete(`/${id}`);
 export const updateRecommendations = (id) =>
-  axios.patch(`${url}/${id}/recommendations`);
+  API.patch(`/${id}/recommendations`);
+
+export const signIn = (formData) => API.post("/signin", formData);
+export const signUp = (formData) => API.post("/signup", formData);
