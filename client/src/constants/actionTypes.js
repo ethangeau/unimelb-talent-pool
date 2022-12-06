@@ -3,3 +3,6 @@ export const CREATE_PROFILE = "CREATE_PROFILE";
 export const UPDATE_PROFILE = "UPDATE_PROFILE";
 export const DELETE_PROFILE = "DELETE_PROFILE";
 export const UPDATE_RECOMMENDATIONS = "UPDATE_RECOMMENDATIONS";
+
+export const AUTH = "AUTH";
+export const LOGOUT = "LOGOUT";
