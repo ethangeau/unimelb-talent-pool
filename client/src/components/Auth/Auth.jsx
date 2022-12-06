@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import {
   Avatar,
@@ -12,10 +14,9 @@ import {
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 import Input from "./Input";
+import { signIn, signUp } from "../../actions/auth";
 
 const initialState = {
-  firstName: "",
-  lastName: "",
   email: "",
   password: "",
   confirmPassword: "",
@@ -25,7 +26,18 @@ export default function Auth() {
   const [formState, setFormState] = useState(initialState);
   const [isSignup, setIsSignup] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const handleSubmit = () => {};
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isSignup) {
+      dispatch(signUp(formState, navigate));
+    } else {
+      dispatch(signIn(formState, navigate));
+    }
+  };
   const handleChange = (e) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
@@ -61,21 +73,6 @@ export default function Auth() {
         </Typography>
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
-            {isSignup && (
-              <>
-                <Input
-                  name="firstName"
-                  label="First Name"
-                  handleChange={handleChange}
-                  autoFocus
-                />
-                <Input
-                  name="lastName"
-                  label="Last Name"
-                  handleChange={handleChange}
-                />
-              </>
-            )}
             <Input
               name="email"
               label="Email"
