@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Avatar, Button, Paper, Grid, Container } from "@mui/material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createProfile, updateProfile } from "../actions/profiles";
 
 import FileBase from "react-file-base64";
@@ -17,14 +17,21 @@ const initialProfileData = {
   linkedin: "",
   github: "",
   instagram: "",
+  userID: "",
 };
 
 export default function UserInfo() {
-  const userProfile = null;
-  const hasInfo = false;
+  const user = JSON.parse(localStorage.getItem("profile"));
+  console.log("user.userID", user.result._id);
+  const userProfile = useSelector((state) =>
+    state.profiles.find((p) => p.userID === user.result._id)
+  );
+  console.log("userProfile", userProfile);
+
   const [formData, setFormData] = useState(
     userProfile ? userProfile : initialProfileData
   );
+  console.log("formData", formData);
 
   const dispatch = useDispatch();
 
@@ -39,7 +46,11 @@ export default function UserInfo() {
     clearFormData();
   };
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({
+      ...formData,
+      userID: user.userID,
+      [e.target.name]: e.target.value,
+    });
   };
   const clearFormData = () => {
     setFormData(initialProfileData);
@@ -153,7 +164,7 @@ export default function UserInfo() {
             variant="contained"
             sx={{ backgroundColor: "#023D80", mt: 2 }}
           >
-            {hasInfo ? "Reset/Delete" : "Submit"}
+            {userProfile ? "Reset/Delete" : "Submit"}
           </Button>
         </form>
       </Paper>

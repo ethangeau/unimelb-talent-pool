@@ -12,9 +12,10 @@ const profileSchema = mongoose.Schema({
   github: String,
   instagram: String,
   recommendations: {
-    type: Number,
-    default: 0,
+    type: [String],
+    default: [],
   },
+  userID: String,
 });
 
 const Profile = mongoose.model("Profile", profileSchema);
