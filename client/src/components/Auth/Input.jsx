@@ -16,6 +16,7 @@ export default function Input(props) {
     type,
     handleShowPassword,
     disabled,
+    defaultValue,
   } = props;
 
   return (
@@ -32,6 +33,7 @@ export default function Input(props) {
         autoFocus={autoFocus}
         type={type}
         disabled={disabled}
+        defaultValue={defaultValue}
         InputProps={
           name === "password"
             ? {

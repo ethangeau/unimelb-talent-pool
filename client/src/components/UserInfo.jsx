@@ -80,6 +80,7 @@ export default function UserInfo() {
               }}
             >
               <Avatar
+                src={formData.avatar}
                 sx={{
                   mr: 2,
                   bgcolor: "#023D80",
@@ -87,7 +88,7 @@ export default function UserInfo() {
                   height: "6rem",
                 }}
               >
-                A
+                {formData.firstName.toUpperCase().charAt(0)}
               </Avatar>
               <FileBase
                 type="file"
@@ -104,6 +105,7 @@ export default function UserInfo() {
               autoFocus
               isHalf
               required
+              defaultValue={formData.firstName}
             />
             <Input
               name="lastName"
@@ -111,6 +113,7 @@ export default function UserInfo() {
               handleChange={handleChange}
               isHalf
               required
+              defaultValue={formData.lastName}
             />
             <Input
               name="role"
@@ -118,6 +121,7 @@ export default function UserInfo() {
               handleChange={handleChange}
               isHalf
               required
+              defaultValue={formData.role}
             />
             <Input
               name="email"
@@ -125,6 +129,7 @@ export default function UserInfo() {
               handleChange={handleChange}
               isHalf
               required
+              defaultValue={formData.email}
             />
             <Input
               name="introduction"
@@ -132,30 +137,35 @@ export default function UserInfo() {
               handleChange={handleChange}
               multiline
               required
+              defaultValue={formData.introduction}
             />
             <Input
               name="personalSite"
               label="Personal Site"
               handleChange={handleChange}
               isHalf
+              defaultValue={formData.personalSite}
             />
             <Input
               name="linkedin"
               label="Linkedin"
               handleChange={handleChange}
               isHalf
+              defaultValue={formData.linkedin}
             />
             <Input
               name="github"
               label="Github"
               handleChange={handleChange}
               isHalf
+              defaultValue={formData.github}
             />
             <Input
               name="instagram"
               label="Instagram"
               handleChange={handleChange}
               isHalf
+              defaultValue={formData.instagram}
             />
           </Grid>
           <Button
