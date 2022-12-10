@@ -12,9 +12,9 @@ export default function Profiles() {
     <>
       <Container maxWidth="false">
         <Grid container spacing={2}>
-          {profiles.map((user) => (
-            <Grid item key={user._id} xs={12} sm={6} md={4} lg={3} xl={2.4}>
-              <Profile key={user._id} user={user} />
+          {profiles.map((profile) => (
+            <Grid item key={profile._id} xs={12} sm={6} md={4} lg={3} xl={2.4}>
+              <Profile key={profile._id} profile={profile} />
             </Grid>
           ))}
         </Grid>

@@ -38,8 +38,9 @@ export const deleteProfile = (id) => async (dispatch) => {
 };
 
 export const updateRecommendations = (id) => async (dispatch) => {
+  const user = JSON.parse(localStorage.getItem("profile"));
   try {
-    const { data } = await api.updateRecommendations(id);
+    const { data } = await api.updateRecommendations(id, user?.token);
     dispatch({ type: actions.UPDATE_RECOMMENDATIONS, payload: data });
   } catch (error) {
     console.log(error.message);

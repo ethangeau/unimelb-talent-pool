@@ -59,7 +59,7 @@ export const updateRecommendations = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(_id))
     return res.status(404).send("This profile does not exist");
 
-  const profile = await Profile.findById(id);
+  const profile = await Profile.findById(_id);
 
   const idx = profile.recommendations.findIndex(
     (_id) => _id === String(req.userId)
