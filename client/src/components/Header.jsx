@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
 import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { AppBar, Avatar, Typography } from "@mui/material";
 import decode from "jwt-decode";
 
 import SchoolIcon from "@mui/icons-material/School";
-import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
+import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 
 import * as actionTypes from "../constants/actionTypes";
 
 export default function Header() {
+  const profiles = useSelector((state) => state.profiles);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  console.log("user", user);
+  const profile = profiles.find((p) => p.userID === user?.result?._id);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -88,10 +92,10 @@ export default function Header() {
             <Link to="/userinfo">
               <Avatar
                 size="small"
-                src={user.avatar}
+                src={profile?.avatar}
                 sx={{ width: "2.5rem", height: "2.5rem" }}
               >
-                <InsertEmoticonIcon />
+                <PermIdentityIcon />
               </Avatar>
             </Link>
             <Typography
