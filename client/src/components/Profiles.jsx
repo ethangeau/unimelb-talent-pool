@@ -7,7 +7,7 @@ import Profile from "./Profile";
 
 export default function Profiles() {
   const profiles = useSelector((state) => state.profiles);
-  console.log("profiles", profiles);
+
   return (
     <>
       <Container maxWidth="false">

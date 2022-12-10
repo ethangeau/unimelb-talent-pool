@@ -13,7 +13,7 @@ import * as actionTypes from "../constants/actionTypes";
 export default function Header() {
   const profiles = useSelector((state) => state.profiles);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  console.log("user", user);
+
   const profile = profiles.find((p) => p.userID === user?.result?._id);
 
   const dispatch = useDispatch();
