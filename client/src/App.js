@@ -21,6 +21,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Header />}>
           <Route index element={<Profiles />} />
+          <Route path="search" element={<Profiles />} />
           <Route path="auth" element={<Auth />} />
           <Route path="userinfo" element={<UserInfo />} />
           <Route path="*" element={<NotFound />} />

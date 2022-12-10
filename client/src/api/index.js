@@ -12,6 +12,8 @@ API.interceptors.request.use((req) => {
 });
 
 export const getProfiles = () => API.get("/");
+export const getProfilesBySearch = (searchQuery) =>
+  API.get(`/search?searchQuery=${searchQuery.search || "none"}`);
 export const createProfile = (newProfile) => API.post("/", newProfile);
 export const updateProfile = (id, updatedProfile) =>
   API.patch(`/${id}`, updatedProfile);

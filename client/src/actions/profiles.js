@@ -10,6 +10,18 @@ export const getProfiles = () => async (dispatch) => {
   }
 };
 
+export const getProfilesBySearch = (searchQuery) => async (dispatch) => {
+  try {
+    const {
+      data: { data },
+    } = await api.getProfilesBySearch(searchQuery);
+
+    dispatch({ type: actions.GET_BY_SEARCH, payload: { data } });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const createProfile = (profile) => async (dispatch) => {
   try {
     const { data } = await api.createProfile(profile);
