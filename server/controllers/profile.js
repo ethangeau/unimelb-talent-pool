@@ -4,6 +4,31 @@ import Profile from "../models/profile.js";
 export const getProfiles = async (req, res) => {
   try {
     const profiles = await Profile.find();
+
+    console.log("get by all", profiles);
+    console.log("get by all", profiles.length);
+
+    res.status(200).json(profiles);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+export const getProfilesBySearch = async (req, res) => {
+  const { searchQuery } = req.query;
+
+  try {
+    const profiles = await Profile.find({
+      $or: [
+        { firstName: { $regex: searchQuery, $options: "i" } },
+        { lastName: { $regex: searchQuery, $options: "i" } },
+        { role: { $regex: searchQuery, $options: "i" } },
+        { introduction: { $regex: searchQuery, $options: "i" } },
+      ],
+    });
+    console.log("get by search", profiles);
+    console.log("get by search", profiles.length);
+
     res.status(200).json(profiles);
   } catch (error) {
     res.status(404).json({ message: error.message });

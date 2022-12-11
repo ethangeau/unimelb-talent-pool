@@ -1,6 +1,7 @@
 import express from "express";
 import {
   getProfiles,
+  getProfilesBySearch,
   createProfile,
   updateProfile,
   deleteProfile,
@@ -13,6 +14,7 @@ import auth from "../middleware/auth.js";
 const router = express.Router();
 
 router.get("/", getProfiles);
+router.get("/search", getProfilesBySearch);
 router.post("/", auth, createProfile);
 router.patch("/:id", auth, updateProfile);
 router.delete("/:id", auth, deleteProfile);
