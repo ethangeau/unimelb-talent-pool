@@ -11,7 +11,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
 
 import * as actionTypes from "../constants/actionTypes";
-import { getProfilesBySearch } from "../actions/profiles";
+import { getProfiles, getProfilesBySearch } from "../actions/profiles";
 
 export default function Header() {
   const profiles = useSelector((state) => state.profiles);
@@ -91,6 +91,9 @@ export default function Header() {
               "&:hover": {
                 textDecoration: "underline",
               },
+            }}
+            onClick={() => {
+              dispatch(getProfiles());
             }}
           >
             Unimelb Talent Pool

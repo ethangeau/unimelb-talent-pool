@@ -12,11 +12,9 @@ export const getProfiles = () => async (dispatch) => {
 
 export const getProfilesBySearch = (searchQuery) => async (dispatch) => {
   try {
-    const {
-      data: { data },
-    } = await api.getProfilesBySearch(searchQuery);
+    const { data } = await api.getProfilesBySearch(searchQuery);
 
-    dispatch({ type: actions.GET_BY_SEARCH, payload: { data } });
+    dispatch({ type: actions.GET_BY_SEARCH, payload: data });
   } catch (error) {
     console.log(error);
   }
